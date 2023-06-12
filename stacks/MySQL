@@ -1,0 +1,24 @@
+version: "3"
+services:
+  mysql:
+    image: mariadb
+    env_file: ./mysql.env
+    container_name: mysql
+    restart: unless-stopped
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./config:/etc/mysql
+    networks:
+      - mysql  
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: unless-stopped
+    networks: 
+      - mysql
+      - publicweb    
+networks:
+  mysql:
+    external: true
+  publicweb:
+    external: true

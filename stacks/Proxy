@@ -1,0 +1,27 @@
+version: "3"
+services:
+  proxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: webproxy
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+      - '35729:35729'
+    volumes:
+      - ./proxy/data:/data
+      - ./proxy/certs:/etc/letsencrypt
+    networks:
+      - publicweb
+  livereloadproxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: livereloadproxy
+    restart: unless-stopped
+    volumes:
+      - ./livereload/data:/data
+    networks:
+      - publicweb
+networks:
+  publicweb:
+    external: true

@@ -1,0 +1,16 @@
+pageInfo:
+  title: Home Lab
+sections:
+  - widgets:
+      - type: clock
+        options:
+          timeZone: Asia/Kolkata
+          format: en-GB
+          hideDate: true
+          hideSeconds: true
+          customCityName: Delhi
+appConfig:
+  theme: nord-frost
+  language: en
+  layout: auto
+  iconSize: medium
